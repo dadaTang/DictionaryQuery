@@ -54,12 +54,7 @@ public class QueryDictionaryActivity extends Activity {
 					query(phone);
 				} else {
 					Toast.makeText(getApplicationContext(),"您输入的为空!",Toast.LENGTH_SHORT).show();
-					// 手机震动效果
-					Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-					// 设置震动的毫秒值
-					vibrator.vibrate(500);
-					// 规律震动(震动规律(不震动时间,不震动时间,...),重复次数)
-					vibrator.vibrate(new long[] { 200, 200, 200, 200 }, -1);
+
 				}
 			}
 		});

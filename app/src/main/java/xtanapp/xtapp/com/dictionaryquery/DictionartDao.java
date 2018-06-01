@@ -2,12 +2,13 @@ package xtanapp.xtapp.com.dictionaryquery;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 中文字典查询
+ * */
 public class DictionartDao {
     //返回的结果
     private static String mResult = "查询有误";
@@ -17,9 +18,8 @@ public class DictionartDao {
     private List<String> mList = new ArrayList<>();
     //查询类型(1:汉字,2:英文字符串)
     private int mType = 0;
-
     //获取文件库路径
-    private static String strPath = Environment.getExternalStorageDirectory().toString() + "/DictionaryFiles/ChineseDictionary.db";
+    private static String strPath =Constants.CHINESE_DIC_PATH;
     //初始化数据库
     private static SQLiteDatabase db = SQLiteDatabase.openDatabase(strPath, null,
             SQLiteDatabase.OPEN_READONLY);
@@ -33,7 +33,7 @@ public class DictionartDao {
         //匹配汉字
         if (index_key.matches("^[\\u4e00-\\u9fa5]+$")) {
             mResult = chineseQueryDB(index_key);
-        } else if (index_key.matches("^[A-Za-z]+$")) {
+        } else if (index_key.matches("^[A-Z+$")) {
             //将字母转成小写
             index_key = index_key.toLowerCase();
             //匹配字母
