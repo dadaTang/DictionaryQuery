@@ -16,7 +16,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-    private Button btn_next;
+    private Button btn_Chinese;
+    private Button btn_English;
+    private Button btn_Idoil;
 
     private String path = null;
     private static boolean flag=false;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
 
-                Toast.makeText(getApplicationContext(), "xuyaoquanx", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "请在设置中授予权限！", Toast.LENGTH_SHORT).show();
             } else {
                 initDB();
             }
@@ -51,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
             //判断数据文件是否存在
 
             //将数据文件存放到指定目录
-            FileUtils.getInstance(getApplication().getApplicationContext() ).copyAssetsToSD("","zfile");
+            FileUtils.getInstance(getApplication().getApplicationContext() ).copyAssetsToSD("","DictionaryFiles");
         }else{
-            Toast.makeText(getApplication(),"放弃吧",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(),"请插入SD卡！",Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -61,9 +63,32 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initUI() {
-        btn_next = findViewById(R.id.btn_next);
+        btn_Chinese = findViewById(R.id.btn_Chinese);
         // 点击查询功能
-        btn_next.setOnClickListener(new View.OnClickListener() {
+        btn_Chinese.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),
+                        QueryDictionaryActivity.class));
+
+            }
+        });
+
+        btn_English = findViewById(R.id.btn_English);
+        // 点击查询功能
+        btn_English.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),
+                        QueryDictionaryActivity.class));
+            }
+        });
+
+        btn_Idoil = findViewById(R.id.btn_Idoil);
+        // 点击查询功能
+        btn_Idoil.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

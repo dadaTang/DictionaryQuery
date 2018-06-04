@@ -16,7 +16,7 @@ public class DictionartDao {
     private List<String> mNoResultList = new ArrayList<>();
     //记录多结果的
     private List<String> mList = new ArrayList<>();
-    //查询类型(1:汉字,2:英文字符串)
+    //查询词典类型(0：默认汉语，1:汉英词典,2:成语,)
     private int mType = 0;
     //获取文件库路径
     private static String strPath =Constants.CHINESE_DIC_PATH;
@@ -33,7 +33,7 @@ public class DictionartDao {
         //匹配汉字
         if (index_key.matches("^[\\u4e00-\\u9fa5]+$")) {
             mResult = chineseQueryDB(index_key);
-        } else if (index_key.matches("^[A-Z+$")) {
+        } else if (index_key.matches("^[A-Za-z]+$")) {
             //将字母转成小写
             index_key = index_key.toLowerCase();
             //匹配字母
@@ -50,7 +50,7 @@ public class DictionartDao {
         String string="";
             //查询数据库
             cursor = db.query("valueTable",
-                    new String[]{"desc"}, "name=?",
+                    new String[]{"value_desc"}, "value_key=?",
                     new String[]{index}, null, null, null);
             if (cursor.moveToNext()) {
                 string = cursor.getString(0);
@@ -83,6 +83,7 @@ public class DictionartDao {
                         indexWord=str.substring(i,i+1);
                         indexValue = chineseQueryDB(indexWord);
                         strResult+=indexValue;
+
                     }
 
 
@@ -91,7 +92,7 @@ public class DictionartDao {
                     String[] arr=indexKey.split("，");
                     String indexValue="";
                     for (String string:arr){
-                        strResult= chineseQueryDB(string);
+                        indexValue= chineseQueryDB(string)+"\n\n";
                         strResult+=indexValue;
                     }
                 }else {
@@ -115,10 +116,10 @@ public class DictionartDao {
 
     //结果格式化
     private static String StringFormat(String str) {
-      str=str.replace("，【","\n【");
-      str=str.replace("。【","\n【");
-      str=str.replace("，(","\n(");
-      str=str.replace("。(","\n(");
+      str=str.replace("$","\n");
+      str=str.replace("$","\n");
+      str=str.replace("$","\n");
+      str=str.replace("$","\n");
       str=str.replace("；","\n");
         return  str;
     }

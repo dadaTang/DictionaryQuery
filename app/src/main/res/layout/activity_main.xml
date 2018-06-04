@@ -9,6 +9,16 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="点一下"
-        android:id="@+id/btn_next"/>
+        android:text="中文词典"
+        android:id="@+id/btn_Chinese"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英文词典"
+        android:id="@+id/btn_English"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="成语词典"
+        android:id="@+id/btn_Idoil"/>
 </LinearLayout>
