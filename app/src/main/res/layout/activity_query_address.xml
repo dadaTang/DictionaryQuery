@@ -20,12 +20,54 @@
             android:layout_height="wrap_content"
             android:hint="@string/editText_Input"
             android:inputType="text" />
-
-        <Button
-            android:id="@+id/bt_query"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="查询" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:textColor="@color/textColor">
+
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/rg_chooseDictionary"
+                >
+                <RadioButton
+                    android:id="@+id/rb_Chinese"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rb_Chinese"
+                    android:checked="true"
+                    />
+                <RadioButton
+                    android:id="@+id/rb_CN_EN"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rb_CN_EN"
+                   />
+                <RadioButton
+                    android:id="@+id/rb_Idio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rb_Idio"
+                   />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/bt_query"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/btn_query"
+                />
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/tv_query_result"

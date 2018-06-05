@@ -3,4 +3,7 @@
 
     <string name="editText_Input">随意输入</string>
     <string name="btn_query">查询</string>
+    <string name="rb_Chinese">汉语词典</string>
+    <string name="rb_CN_EN">汉英词典</string>
+    <string name="rb_Idio">成语词典</string>
 </resources>
